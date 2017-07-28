@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  	<meta charset="utf-8">
-    <title>Supression Annonce</title>
-  </head>
-  <body>
-    <h1>Supression de l'annonce n°{{ id }} !</h1>
-    <p>
-      Ici nous pourrons lire l'annonce supprimée dont l'ID est: {{ id }}<br />
-    </p>
-    <h5>Cordialement!</h5>
-  </body>
-</html>
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Supprimer une annonce - {{ parent() }}
+{% endblock %}
+
+{% block ocplatform_body %}
+
+  <h2>Suppression d'une annonce</h2>
+
+  {{ include("OCPlatformBundle:Advert:form.html.twig") }}
+
+  <p>
+    L'annonce "{{ advert.title }}" a été supprimé avec succès.
+  </p>
+
+  <p>
+    <a href="{{ path('oc_platform_home', {'page': 1}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour aux annonces
+    </a>
+  </p>
+
+{% endblock %}

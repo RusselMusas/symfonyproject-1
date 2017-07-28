@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  	<meta charset="utf-8">
-    <title>Ajout d'une annonce</title>
-  </head>
-  <body>
-    <h1>Ajout d'une annonce !</h1>
-    <p>
-      Ajout de l'annonce avec succès!
-    </p>
-    <h5>Thanks!</h5>
-  </body>
-</html>
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter une annonce - {{ parent() }}
+{% endblock %}
+
+{% block ocplatform_body %}
+
+  <h2>Ajouter une annonce</h2>
+
+  {{ include("OCPlatformBundle:Advert:form.html.twig") }}
+
+  <p>
+    Merci d'enrichir notre site pour le bien de tous ceux qui s'y connectent.
+  </p>
+
+  <p>
+    <a href="{{ path('oc_platform_home', {'page': 1}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour aux l'annonce
+    </a>
+  </p>
+
+{% endblock %}

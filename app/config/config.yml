@@ -36,6 +36,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        webmaster: "%app_webmaster%"
+        charset: UTF-8
 
 # Doctrine Configuration
 doctrine:

@@ -1,14 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  	<meta charset="utf-8">
-    <title>Editer annonce</title>
-  </head>
-  <body>
-    <h1>Modification de l'annonce N°{{ id }}</h1>
-    <p>
-      Ici il y aura modification de l'annonce N°{{ id }}!
-    </p>
-    <h5>Cordialement!</h5>
-  </body>
-</html>
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier une annonce - {{ parent() }}
+{% endblock %}
+
+{% block ocplatform_body %}
+
+  <h2>Modifier une annonce</h2>
+
+  {{ include("OCPlatformBundle:Advert:form.html.twig") }}
+
+  <p>
+    Vous éditez une annonce déjà existante, merci de ne pas changer
+    l'esprit général de l'annonce déjà publiée.
+  </p>
+
+  <p>
+    <a href="{{ path('oc_platform_view', {'id': advert.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à l'annonce
+    </a>
+  </p>
+
+{% endblock %}
