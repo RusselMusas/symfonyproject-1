@@ -180,7 +180,7 @@ class AdvertController extends Controller
     // Bien sÃƒÆ’Ã‚Â»r, cette mÃƒÆ’Ã‚Â©thode devra rÃƒÆ’Ã‚Â©ellement ajouter l'annonce
     
     // Mais faisons comme si c'ÃƒÆ’Ã‚Â©tait le cas
-    //$session->getFlashBag()->add('info', 'Annonce bien enregistrÃƒÆ’Ã‚Â©e');
+    //$session->getFlashBag()->add('info', 'Annonce bien enregistré');
 
     // Le Ãƒâ€šÃ‚Â« flashBag Ãƒâ€šÃ‚Â» est ce qui contient les messages flash dans la session
     // Il peut bien sÃƒÆ’Ã‚Â»r contenir plusieurs messages :
@@ -195,11 +195,23 @@ class AdvertController extends Controller
     if ($request->isMethod('POST')) {
       // Ici, on s'occupera de la crÃƒÆ’Ã‚Â©ation et de la gestion du formulaire
 
-      $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrê¥®');
+      $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée');
 
       // Puis on redirige vers la page de visualisation de cettte annonce
       return $this->redirectToRoute('oc_platform_view', array('id' => 5));
     }
+
+    //test service
+    // On récupère le service
+    $antispam = $this->container->get('oc_platform.antispam');
+
+    // Je pars du principe que $text contient le texte d'un message quelconque
+    $text = 'gsdvsdsvhjsvvd zjdbksdczc bksjjsbc bjscjzsbcj jcbksjkcd cjksjdcbksbskc dbcksdjbksbscbs sdbksjbjczjc jcskdjckdjczjdk bcksdbjkjck';
+    if ($antispam->isSpam($text)) {
+      throw new \Exception('Votre message a été détecté comme spam !');
+    }
+    
+    // Ici le message n'est pas un spam
 
     // Si on n'est pas en POST, alors on affiche le formulaire
     return $this->render('OCPlatformBundle:Advert:add.html.twig');

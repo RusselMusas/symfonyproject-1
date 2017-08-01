@@ -7,15 +7,17 @@
   <title>{% block title %}OC Plateforme{% endblock %}</title>
 
   {% block stylesheets %}
-    {# On charge le CSS de bootstrap depuis le site directement: href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" #}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    {# <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> #}
+	<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('my_style/mainstyle.css') }}">
   {% endblock %}
 </head>
 
 <body>
   <div class="container">
     <div id="header" class="jumbotron">
-      <h1>Ma plateforme d'annonces</h1>
+      <h1 id="supertitle">Ma plateforme d'annonces</h1>
       <p>
         Ce projet est propulsé par Symfony,
         et construit grâce au MOOC OpenClassrooms et SensioLabs.
@@ -53,10 +55,12 @@
 
   {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    {# <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> #}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	{# Ressources jquery et bootstrap en ligne #}
+    {# <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> #}
+    {# <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> #}
+	{# Ressources jquery et bootstrap en local #}
+	<script src="{{ asset('jquery/jquery-1.11.1.min.js') }}"></script>
+	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
   {% endblock %}
 
 </body>
